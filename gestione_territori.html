@@ -7,15 +7,35 @@
     <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css" />
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript">
+        function assegnaTerritorio() {
+            var terr = document.getElementById('territorio').value;
+            var oTerr =  document.getElementById(terr).text; 
+            var proc = document.getElementById('proclamatore').value; 
+            var oProc =  document.getElementById(proc).text; 
+            confirm("Assegnare il territorio " + oTerr + "\n" + "al Proclamatore " + oProc) ;
+
+            
+            $("#territorio option[value='nessuno']").attr('selected', 'selected');  
+            $('#territorio').selectmenu('refresh');
+
+            
+            $("#proclamatore option[value='nessuno']").attr('selected', 'selected');  
+            $('#proclamatore').selectmenu('refresh');
+        }
+    </script>
+    
 </head>
 
 <body>
     <div data-role="page" id="homePage">
         <div data-role="header">
             <a href="gestione_territori.html" data-icon="home">Home</a>
-            <h1>Gestione Territoti</h1><a href="territori.html" data-icon="info">Territori</a>
+            <h1>Gestione Territori</h1><a href="territori.html" data-icon="info">Territori</a>
         </div>
-        <div data-role="products">
+    
+        <div data-role="gestione">
+            <!--
             <p>
                 Benvenuti nell'applicazione mobile di Gestione Territori.
             </p>
@@ -26,7 +46,30 @@
             <p>
                 Scopri altro <a href="#aboutPage">ancore</a> su SimApps.
             </p>
+            -->
+            <div data-role="fieldcontain">
+                <label for="Territorio">Scegli il territorio:</label>
+                <select id="territorio">
+                    <option value="nessuno"></option>
+                    <option id = "Ivrea_1" value="Ivrea_1">Ivrea 1</option>
+                    <option id = "Ivrea_2" value="Ivrea_2">Ivrea 2</option>
+                    <option id = "Cascinette_1" value="Cascinette_1">Cascinette 1</option>
+                    <option id = "Chiaverano_1" value="Chiaverano_1">Chiaverano 1</option>
+                </select>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="Territorio">Scegli il Proclamatore:</label>
+                <select id="proclamatore">
+                    <option value="nessuno"></option>
+                    <option id = "Bergamelli_Renata" value="Bergamelli_Renata">Bergamelli Renata</option>
+                    <option id = "Bergamelli_Riccardo" value="Bergamelli_Riccardo">Bergamelli Riccardo</option>
+                    <option id = "Boato_Davide" value="Boato_Davide">Boato Davide</option>
+                    <option id = "Boato_Sara" value="Boato_Sara">Boato Sara</option>
+                </select>
+            </div>
+            <input type="button" name="assegna" value="Assegna" onclick="assegnaTerritorio();" />
         </div>
+
         <div data-role="footer">
                 <i>Copyright SimApps &copy; 2017</i>
         </div>
