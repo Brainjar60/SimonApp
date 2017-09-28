@@ -1,8 +1,8 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.helloworld" version="1.0.0">
-  <name>JQuery Mobile App</name>
-  <description>Esercizi del Corso JQUERY - Mobile.</description>
+  <name>Gestione Territori</name>
+  <description>Gestione Territori Mobile App</description>
   <author href="http://phonegap.com" email="support@phonegap.com">PhoneGap Team</author>
-  <content src="test2.html"/>
+  <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="android-minSdkVersion" value="14"/>
   <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1"/>
