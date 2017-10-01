@@ -191,10 +191,10 @@ function salvaAssegnazione(terr,proc, dataAss) {
     addTerritori(); 
     var myselect = $("#cboTerritori");
     myselect[0].selectedIndex = 0;
-    //myselect.selectmenu("refresh");
+    myselect.selectmenu("refresh");
     myselect = $("#cboProclamatori");
     myselect[0].selectedIndex = 0;
-    //myselect.selectmenu("refresh");    
+    myselect.selectmenu("refresh");    
 }
 function addTables() {
     addTerritori(); 
@@ -207,7 +207,7 @@ function deleteTableRows() {
 function addTableRows() {
     deleteTableRows();
     // var html = '<tr><th>1</th><td><a href="#">Ivrea 1</a></td><td>ALBERTO MARINA</td><td>2017-10-01</td><td></td></tr>'
-    $("#assegnazioni-table > tbody").append(html);
+    // $("#assegnazioni-table > tbody").append(html);
     // $("#assegnazioni-table").table("refresh");
     for (var a = 0; a < lista_assegnazioni.length; a++) {
         var iAss = lista_assegnazioni[a];
@@ -219,7 +219,7 @@ function addTableRows() {
                          iAss.dataUscita + '</td><td>' + iAss.dataRientro + '</td></tr>';
         $("#assegnazioni-table > tbody").append(html);
     }
-    //$("#assegnazioni-table").table("refresh");
+    $("#assegnazioni-table").table("refresh");
     
 }
 function passaA(idDiv) {
