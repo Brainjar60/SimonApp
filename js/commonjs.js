@@ -96,7 +96,7 @@ function addTerritori() {
         }
     }
     $('#cboTerritori').val($("#target option:first").val());
-    // $('#cboTerritori').refresh(); 
+    //$('#cboTerritori').refresh(); 
     
 }
 function uscitaTerritorio(localita, numero, proclamatore, data) {
@@ -191,10 +191,10 @@ function salvaAssegnazione(terr,proc, dataAss) {
     addTerritori(); 
     var myselect = $("#cboTerritori");
     myselect[0].selectedIndex = 0;
-    myselect.selectmenu("refresh");
+    //myselect.selectmenu("refresh");
     myselect = $("#cboProclamatori");
     myselect[0].selectedIndex = 0;
-    myselect.selectmenu("refresh");    
+    //myselect.selectmenu("refresh");    
 }
 function addTables() {
     addTerritori(); 
@@ -219,7 +219,7 @@ function addTableRows() {
                          iAss.dataUscita + '</td><td>' + iAss.dataRientro + '</td></tr>';
         $("#assegnazioni-table > tbody").append(html);
     }
-    $("#assegnazioni-table").table("refresh");
+    //$("#assegnazioni-table").table("refresh");
     
 }
 function passaA(idDiv) {
