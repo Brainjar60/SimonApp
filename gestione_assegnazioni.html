@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gestione Territori Mobile App</title>
+    <meta name="viewport" content="width=device-width, initialscale=1">
+    <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.0a4.1.min.css" />
+    <link rel="stylesheet" href="css/jqm-docs.css" />
+    <link rel="stylesheet" href="css/jquery.ui.datepicker.mobile.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script>
+        //reset type=date inputs to text
+        $(document).bind("mobileinit", function () {
+            $.mobile.page.prototype.options.degradeInputs.date = true;
+        });
+    </script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/jQuery.ui.datepicker.js"></script>
+    <script src="js/jquery.ui.datepicker.mobile.js"></script>
+    <script type="text/javascript" src="js/commonjs.js"></script>
+    <script type="text/javascript">
+    </script>
+
+</head>
+
+<body onload='addTables();'>
+    <div data-role="page" id="gestione_territori">
+        <div data-role="header">
+            <a href="#gestione_territori">Home</a>
+            <h1>Gestione Territori</h1><a href="territori.html">Territori</a>
+        </div>
+        <a href="#gestione_assegnazioni" data-role="button" data-inline="true">Assegna territorio</a>
+        <a href="#" data-role="button" data-inline="true">Lista assegnazioni</a>    
+    </div>
+    
+    <div data-role="page" id="gestione_assegnazioni">
+        <div data-role="header">
+            <a href="#gestione_territori">Home</a>
+            <h1>Gestione Assegnazioni</h1><a href="territori.html" >Territori</a>
+        </div>
+        <div data-role="gestione">
+            <script>
+                addTerritori();
+            </script>
+            <form name ='form_assegnazioni'>
+            <div data-role="fieldcontain">
+                <label for="Territorio">Scegli il territorio:</label>
+                <select id='cboTerritori'></select>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="Proclamatore">Scegli il Proclamatore:</label>
+                <select id='cboProclamatori'></select>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="date">Data assegnazione:</label>
+                <input type="date" name="date" id="dataAss" value="" />
+            </div>
+            <input type="button" name="assegna" value="Assegna" onclick="assegnaTerritorio();" />
+            </form>
+            <a href="#tabella_assegnazioni" data-role="button" data-inline="true">Lista assegnazioni</a> 
+        </div>
+        <script type="text/javascript"> 
+            addTerritori(); 
+        </script>
+        <div data-role="footer">
+            <i>Copyright SimApps &copy; 2017</i>
+        </div>
+    </div>
+    <div data-role="page" id="tabella_assegnazioni">
+        <table data-role="table" id="assegnazioni-table" data-mode="reflow" class="ui-responsive">
+            <thead>
+                <tr>
+                <th data-priority="1">Progressivo</th>
+                <th data-priority="persist">Territorio</th>
+                <th data-priority="2">Proclamatore</th>
+                <th data-priority="3">Uscita</th>
+                <th data-priority="4">Riconsegna</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div data-role="page" id="aboutPage">
+        <div data-role="header">Info su SimApps</div>
+        <div data-role="content">
+            <p>
+                Qui trovi le informazioni su SimApps
+                <a href="#homePage">tornando</a> alla home page.
+            </p>
+        </div>
+        <div data-role="footer">
+            <i>Copyright SimApps &copy; 2017</i>
+        </div>
+    </div>
+</body>
+
+</html>

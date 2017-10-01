@@ -5,87 +5,34 @@
     <title>Gestione Territori Mobile App</title>
     <meta name="viewport" content="width=device-width, initialscale=1">
     <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet"  href="css/jquery.mobile-1.0a4.1.min.css" />	
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="js/commonjs.js"></script>
     <script type="text/javascript">
-        function assegnaTerritorio() {
-            var terr = document.getElementById('territorio').value;
-            var oTerr =  document.getElementById(terr).text; 
-            var proc = document.getElementById('proclamatore').value; 
-            var oProc =  document.getElementById(proc).text; 
-            confirm("Assegnare il territorio " + oTerr + "\n" + "al Proclamatore " + oProc) ;
-
-            
-            $("#territorio option[value='nessuno']").attr('selected', 'selected');  
-            $('#territorio').selectmenu('refresh');
-
-            
-            $("#proclamatore option[value='nessuno']").attr('selected', 'selected');  
-            $('#proclamatore').selectmenu('refresh');
-        }
     </script>
-    
+
 </head>
 
 <body>
-    <div data-role="page" id="homePage">
-        <div data-role="header">
-            <a href="gestione_territori.html" data-icon="home">Home</a>
-            <h1>Gestione Territori</h1><a href="territori.html" data-icon="info">Territori</a>
-        </div>
-    
-        <div data-role="gestione">
-            <!--
-            <p>
-                Benvenuti nell'applicazione mobile di Gestione Territori.
-            </p>
-            <p>
-                Vedi quali sono i nostri 
-                <a href="territori.html">territori</a>.
-            </p>
-            <p>
-                Scopri altro <a href="#aboutPage">ancore</a> su SimApps.
-            </p>
-            -->
-            <div data-role="fieldcontain">
-                <label for="Territorio">Scegli il territorio:</label>
-                <select id="territorio">
-                    <option value="nessuno"></option>
-                    <option id = "Ivrea_1" value="Ivrea_1">Ivrea 1</option>
-                    <option id = "Ivrea_2" value="Ivrea_2">Ivrea 2</option>
-                    <option id = "Cascinette_1" value="Cascinette_1">Cascinette 1</option>
-                    <option id = "Chiaverano_1" value="Chiaverano_1">Chiaverano 1</option>
-                </select>
+        <div data-role="page" id="homePage">
+            <div data-role="header">
+                <a href="gestione_territori.html" >Home</a>
+                <!--    <a href="gestione_territori.html" data-icon="home">Home</a> -->
+                <h1>Gestione Territori</h1><a href="territori.html">Territori</a>
+                <!-- <h1>Gestione Territori</h1><a href="territori.html" data-icon="info">Territori</a> -->
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="gestione_assegnazioni.html" class="ui-btnactive">Assegnazioni</a></li>
+                        <li><a href="persistent_footer_credits.html">Territori</a></li>
+                        <li><a href="persistent_footer_contact.html">Proclamatori</a></li>
+                    </ul>
+                </div>
             </div>
-            <div data-role="fieldcontain">
-                <label for="Territorio">Scegli il Proclamatore:</label>
-                <select id="proclamatore">
-                    <option value="nessuno"></option>
-                    <option id = "Bergamelli_Renata" value="Bergamelli_Renata">Bergamelli Renata</option>
-                    <option id = "Bergamelli_Riccardo" value="Bergamelli_Riccardo">Bergamelli Riccardo</option>
-                    <option id = "Boato_Davide" value="Boato_Davide">Boato Davide</option>
-                    <option id = "Boato_Sara" value="Boato_Sara">Boato Sara</option>
-                </select>
+            <div data-role="footer">
+                    <i>Copyright SimApps &copy; 2017</i>
             </div>
-            <input type="button" name="assegna" value="Assegna" onclick="assegnaTerritorio();" />
         </div>
-
-        <div data-role="footer">
-                <i>Copyright SimApps &copy; 2017</i>
-        </div>
-    </div>
-    <div data-role="page" id="aboutPage">
-        <div data-role="header">Info su SimApps</div>
-        <div data-role="content">
-            <p>
-                Qui trovi le informazioni su SimApps
-                <a href="#homePage">tornando</a> alla home page.
-            </p>
-        </div>
-        <div data-role="footer">
-            <i>Copyright SimApps &copy; 2017</i>
-        </div>
-    </div>
 </body>
 
 </html>
