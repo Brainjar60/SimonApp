@@ -5,6 +5,14 @@
     <title>Gestione Territori Mobile App</title>
     <meta name="viewport" content="width=device-width, initialscale=1">
     <link rel="stylesheet" href="css/jquery.ui.datepicker.mobile.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <style type="text/css">
+        .mainTable {
+            font-family:Arial,Verdana,sans-serif;
+            font-size:9pt;           
+            color:#00f;
+        }
+    </style>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script>
         //reset type=date inputs to text
@@ -16,51 +24,145 @@
     <script src="js/jQuery.ui.datepicker.js"></script>
     <script src="js/jquery.ui.datepicker.mobile.js"></script>
     <script type="text/javascript" src="js/commonjs.js"></script>
+    <script type="text/javascript" src="js/proclamatore.js"></script>
+    <script type="text/javascript" src="js/territorio.js"></script>
+    <script type="text/javascript" src="js/assegnazione.js"></script>
+    
     <script type="text/javascript">
+        /*
+        jQuery.browser = {};
+        (function () {
+            jQuery.browser.msie = false;
+            jQuery.browser.version = 0;
+            if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+                jQuery.browser.msie = true;
+                jQuery.browser.version = RegExp.$1;
+            }
+        })();
+        */
     </script>
 
 </head>
 
-<body onload='addTables();'>
+<body onload='addTables();' class="mainTable">
+    <!-- background='img/sfondo.png'> -->
     <div id="gestione_territori" style='display: block;'>
+        <br/><br/><br/>
         <div data-role="header">
-            <a href="#gestione_territori">Home</a>
-            <h1>Gestione Territori</h1>
+            <center><h1>Gestione Territori</h1></center>
         </div>
-        <input type="button" name="assegna" value="Assegna territorio" onclick="passaA('gestione_assegnazioni');" />
-        <input type="button" name="listaass" value="Lista assegnazioni" onclick="passaA('tabella_assegnazioni');" />
-            
+        <br/><br/><br/>
+        <center><button name="assegna" class='btn btn-large' onclick="passaA('gestione_assegnazioni');">Assegna territorio </button></center>
+        <br/><br/><br/>
+        <center><button name="riconse" class='btn btn-large' onclick="passaA('gestione_riconsegne');" >Riconsegna rerritorio </button></center>
+        <br/><br/><br/>
+        <center><button name="memoass" class='btn btn-large' onclick="passaA('tabella_assegnazioni');">Visualizza assegnazioni</button></center>
+        <br/><br/><br/>
+        <center><button name="memosto" class='btn btn-large' onclick="passaA('storico_assegnazioni');">Visualizza storico</button></center>
+
     </div>
     <div style='display: none;' id="gestione_assegnazioni">
-        <h1>Gestione Assegnazioni</h1>
+        <button class='btn' name="goback" onclick="passaA('gestione_territori');" >Back</button>
+        <h1>Assegna Territrio</h1>
         <div id="gestione">
-            <form name ='form_assegnazioni'>
-            <div>
-                <label for="Territorio">Scegli il territorio:</label>
-                <select id='cboTerritori'></select>
-            </div>
-            <div>
-                <label for="Proclamatore">Scegli il Proclamatore:</label>
-                <select id='cboProclamatori'></select>
-            </div>
-            <div>
-                <label for="date">Data assegnazione:</label>
-                <input type="date" name="date" id="dataAss" value="" />
-            </div>
-            <input type="button" name="assegna" value="Assegna" onclick="assegnaTerritorio();" />
-            </form>
-            <input type="button" name="listaass" value="Lista assegnazioni" onclick="passaA('tabella_assegnazioni');" />
+            <table>
+                <tr><td><br/></td></tr>
+                <tr>
+                    <td><label for="Territorio">Scegli il territorio:</label></td>
+                    <td><select id='cboTerritori'></select></td>
+                </tr>
+                <tr><td><br/></td></tr>
+                
+                <tr>
+                    <td><label for="Proclamatore">Scegli il proclamatore:</label></td>
+                    <td><select id='cboProclamatori'></select></td>
+                </tr>
+                <tr><td><br/></td></tr>
+                <tr>
+                    <td><label for="date">Data assegnazione:</label></td>
+                    <td><input type="date" name="date" id="dataAss" value="" /></td>
+                </tr>
+                <tr><td><br/></td></tr>
+                <tr>
+                    <td colspan=2 align='center'><button class='btn btn-large'  name="assegna" onclick="registraTerritorio();">Registra</button></td>
+                </tr>
+                <tr><td><br/></td></tr>
+                <tr><td><br/></td></tr>
+                <tr>
+                    <td><button class='btn' name="listaass" onclick="passaA('tabella_assegnazioni');">Assegnazioni aperte</button></td>
+                    <td><button class='btn' name="listaass" onclick="passaA('storico_assegnazioni');">Assegnazioni chiuse</button></td>
+                </tr>
+            </table>
         </div>
     </div>
+    <div style='display: none;' id="gestione_riconsegne">
+        <button class='btn' name="goback" onclick="passaA('gestione_territori');" >Back</button>
+        <h1>Riconsegna Territorio</h1>
+            <div id="gestione">
+                <table>
+                    <tr><td><br/></td></tr>                        
+                    <tr>
+                        <td><label for="Territorio">Scegli il territorio:</label></td>
+                        <td><select id='cboTerritoriRic'onchange='datiTerritorio(this);'></select></td>
+                    </tr>
+                    <tr><td><br/></td></tr>
+                    <tr>
+                        <td><label for="Proclamatore">Assegnato a:</label></td>
+                        <td><input type="text" id="proclamatoreAss" value="" /></td>
+                    </tr>
+                    <tr><td><br/></td></tr>
+                    <tr>
+                        <td><label for="date">Data assegnazione:</label></td>
+                        <td><input type="text" id="dataAssRie" value="" /></td>
+                    </tr>
+                    <tr><td><br/></td></tr>
+                    <tr>
+                        <td><label for="date">Data riconsegna:</label></td>
+                        <td><input type="date" name="dataRic" id="dataRic" value="" /></td>
+                    </tr>
+                    <tr><td><br/></td></tr>
+                    <tr>
+                        <td colspan=2 align='center'><button class='btn btn-large'  name="assegna" onclick="rientroTerritorio();">Registra</button></td>
+                    </tr>
+                    <tr><td><br/></td></tr>
+                    <tr><td><br/></td></tr>
+                    <tr>
+                        <td><button class='btn' name="listaass" onclick="passaA('tabella_assegnazioni');">Assegnazioni aperte</button></td>
+                        <td><button class='btn' name="listaass" onclick="passaA('storico_assegnazioni');">Assegnazioni chiuse</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     <div style='display: none;' id="tabella_assegnazioni">
-        <table data-role="table" id="assegnazioni-table" data-mode="reflow" class="ui-responsive">
+        <button class='btn' name="goback" onclick="passaA('gestione_territori');" >Back</button>
+        <br/>
+        <br/>
+        <table data-role="table" id="assegnazioni-table" data-mode="reflow" class="ui-responsive mainTable">
             <thead>
                 <tr>
-                <th>Prog.</th>
-                <th>Territorio</th>
-                <th>Proclamatore</th>
-                <th>Uscita</th>
-                <th>Rientro</th>
+                    <th>Prog.</th>
+                    <th>Territorio</th>
+                    <th>Proclamatore</th>
+                    <th>Uscita</th>
+                    <th>Rientro</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div style='display: none;' id="storico_assegnazioni">
+        <button class='btn' name="goback" onclick="passaA('gestione_territori');" >Back</button>
+        <br/>
+        <br/>
+        <table data-role="table" id="storico-table" data-mode="reflow" class="ui-responsive mainTable" >
+            <thead>
+                <tr>
+                    <th>Prog.</th>
+                    <th>Territorio</th>
+                    <th>Proclamatore</th>
+                    <th>Uscita</th>
+                    <th>Rientro</th>
                 </tr>
             </thead>
             <tbody>
