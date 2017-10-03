@@ -1,16 +1,16 @@
 //-------------------------------------------------- TERRITORIO -------------------------------------------------------
 var nIvrea = 38;
 var nBurolo = 5;
-var nCascinette = 9;
-var nChiaverano = 15;
+var nCascinette = 7;
+var nChiaverano = 17;
 
 function objTerritorio(localita, numero) {
     this.localita = '';
     if (localita) this.localita = localita;
     this.numero = '';
     if (numero) this.numero = numero;
-    this.territorio = this.localita + numero;
-    this.testo = this.localita + ' ' + numero;
+    this.territorio = this.localita + this.numero;
+    this.testo = this.localita + ' ' + this.numero;
     this.stato = 'L';
     this.proclamatore = '';
     this.dataUscita = '';
