@@ -13,6 +13,9 @@ function addProclamatori() {
     
     for (var p = 0; p < lsProc.length; p++) {
         var coppia = lsProc[p].split(' ');
+        if (coppia[0].indexOf('§')>-1) {
+            coppia[0] = coppia[0].replace('§', ' ');
+        }
         var oProc = new objProclamatore(coppia[0], coppia[1]);
         lista_proclamatori[lista_proclamatori.length] = oProc;
         $('#cboProclamatori').append('<option id="' + oProc.id + '" value="' + oProc.id + '">' + oProc.nominativo + '</option>');

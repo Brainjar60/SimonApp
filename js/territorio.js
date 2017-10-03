@@ -9,8 +9,8 @@ function objTerritorio(localita, numero) {
     if (localita) this.localita = localita;
     this.numero = '';
     if (numero) this.numero = numero;
-    this.territorio = this.localita + this.numero;
-    this.testo = this.localita + ' ' + this.numero;
+    this.territorio = this.localita + numero;
+    this.testo = this.localita + ' ' + numero;
     this.stato = 'L';
     this.proclamatore = '';
     this.dataUscita = '';
